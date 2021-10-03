@@ -1,4 +1,4 @@
-CommentList:
+Comment:
   get:
     operationId: getCommentsList
     tags:
@@ -17,8 +17,26 @@ CommentList:
         description: Unauthorized response
       '500':
         description: Unexpected internal server error
+  post:
+    operationId: addNewComment
+    tags:
+      - Comment
+    summary: Add new comment
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/CommentUpdateRequest'
+    responses:
+      '201':
+        description: Successful response if comment was created
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
 
-Comment:
+CommentEntity:
   get:
     operationId: getComment
     tags:
@@ -33,26 +51,6 @@ Comment:
           application/json:
             schema:
               $ref: 'schemas.yaml#/Comment'
-      '401':
-        description: Unauthorized response
-      '500':
-        description: Unexpected internal server error
-  post:
-    operationId: addNewComment
-    tags:
-      - Comment
-    summary: Add new comment
-    parameters:
-      $ref: 'parameters.yaml#/CommentId'
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: 'schemas.yaml#/CommentUpdateRequest'
-    responses:
-      '201':
-        description: Successful response if comment was created
       '401':
         description: Unauthorized response
       '500':
