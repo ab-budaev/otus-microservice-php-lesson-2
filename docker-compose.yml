@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   php:
-    container_name: otus-php
+    container_name: comments-php
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
@@ -12,14 +12,14 @@ services:
       - otus-lesson-microservices
 
   nginx:
-    container_name: otus-nginx
+    container_name: comments-nginx
     build:
       context: .
       dockerfile: .docker/nginx/Dockerfile
     depends_on:
       - php
     ports:
-      - "8000:80"
+      - "8001:80"
     volumes:
       - "./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf"
       - "./public:/var/www/html/public"
@@ -27,14 +27,14 @@ services:
       - otus-lesson-microservices
 
   mysql:
-    container_name: otus-mysql
+    container_name: comments-mysql
     image: mysql:5.7.35
     ports:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: otus
-      MYSQL_USER: ${DB_USERNAME:-otus}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-otus}
+      MYSQL_USER: ${DB_USERNAME:-comments}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-comments}
       MYSQL_ROOT_PASSWORD: 'secret'
       MYSQL_ROOT_HOST: "%"
     volumes:
