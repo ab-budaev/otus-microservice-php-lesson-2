@@ -30,7 +30,7 @@ services:
     container_name: comments-mysql
     image: mysql:5.7.35
     ports:
-      - "3306:3306"
+      - "3308:3306"
     environment:
       MYSQL_DATABASE: otus
       MYSQL_USER: ${DB_USERNAME:-comments}
