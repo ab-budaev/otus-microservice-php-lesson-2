@@ -1,0 +1,64 @@
+Comment:
+  type: object
+  required:
+    - id
+    - author
+    - body
+    - entity_type
+    - entity_id
+  properties:
+    id:
+      type: integer
+      description: Unique ID of the comment
+      nullable: false
+      example: 1
+    author:
+      $ref: '#/author'
+    body:
+      $ref: '#/body'
+    entity_type:
+      $ref: '#/entityType'
+    entity_id:
+      $ref: '#/entityId'
+
+CommentUpdateRequest:
+  type: object
+  required:
+    - author
+    - body
+    - entity_type
+    - entity_id
+  properties:
+    author:
+      $ref: '#/author'
+    body:
+      $ref: '#/body'
+    entity_type:
+      $ref: '#/entityType'
+    entity_id:
+      $ref: '#/entityId'
+
+author:
+  type: string
+  description: Author full name
+  nullable: false
+  example: "Aleksei Budaev"
+
+body:
+  type: string
+  description: Comment body
+  nullable: false
+  example: "I really like this book!"
+
+entityType:
+  type: string
+  description: Related entity type
+  nullable: false
+  enum: [ "book", "blog_post" ]
+  example: "book"
+
+entityId:
+  type: string
+  description: Related entity id
+  nullable: false
+  example: 123

@@ -1,0 +1,24 @@
+openapi: '3.0.3'
+
+info:
+  title: "Comments API"
+  description: "Comments internal API"
+  contact:
+    name: Aleksei Budaev
+    email: ab.budaev@gmail.com
+  version: '1.0.0'
+
+servers:
+  - url: http://comments-svc-internal
+
+tags:
+  - name: Comment
+    description: |
+      Endpoints related to the Comment entity
+
+paths:
+  # Internal contacts endpoints
+  /api/internal/comment:
+    $ref: './comment/paths.yaml#/CommentList'
+  /api/internal/comment/{commentId}:
+    $ref: './comment/paths.yaml#/Comment'

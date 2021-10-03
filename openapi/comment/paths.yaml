@@ -1,0 +1,97 @@
+CommentList:
+  get:
+    operationId: getCommentsList
+    tags:
+      - Comment
+    summary: Get comments list
+    responses:
+      '200':
+        description: Successful response with the list of contacts
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: 'schemas.yaml#/Comment'
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
+
+Comment:
+  get:
+    operationId: getComment
+    tags:
+      - Comment
+    summary: Get comments list
+    parameters:
+      $ref: 'parameters.yaml#/CommentId'
+    responses:
+      '200':
+        description: Successful response with the list of contacts
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas.yaml#/Comment'
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
+  post:
+    operationId: addNewComment
+    tags:
+      - Comment
+    summary: Add new comment
+    parameters:
+      $ref: 'parameters.yaml#/CommentId'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/CommentUpdateRequest'
+    responses:
+      '201':
+        description: Successful response if comment was created
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
+  patch:
+    operationId: updateComment
+    tags:
+      - Comment
+    summary: Add new comment
+    parameters:
+      $ref: 'parameters.yaml#/CommentId'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: 'schemas.yaml#/CommentUpdateRequest'
+    responses:
+      '200':
+        description: Successful response with the list of contacts
+        content:
+          application/json:
+            schema:
+              $ref: 'schemas.yaml#/Comment'
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
+  delete:
+    operationId: deleteComment
+    tags:
+      - Comment
+    summary: Delete comment
+    parameters:
+      $ref: 'parameters.yaml#/CommentId'
+    responses:
+      '204':
+        description: Successful response if comment was deleted
+      '401':
+        description: Unauthorized response
+      '500':
+        description: Unexpected internal server error
