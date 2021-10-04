@@ -4,6 +4,17 @@ Comment:
     tags:
       - Comment
     summary: Get comments list
+    parameters:
+      - name: entityId
+        in: query
+        description: Entity ID that we need to get comments for
+        schema:
+          type: string
+      - name: entityType
+        in: query
+        description: Entity type that we need to get comments for
+        schema:
+          type: string
     responses:
       '200':
         description: Successful response with the list of contacts

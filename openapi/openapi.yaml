@@ -18,7 +18,7 @@ tags:
 
 paths:
   # Internal contacts endpoints
-  /api/v1/comment:
+  /api/v1/comments:
     $ref: './comment/paths.yaml#/Comment'
-  /api/v1/comment/{commentId}:
+  /api/v1/comments/{commentId}:
     $ref: './comment/paths.yaml#/CommentEntity'

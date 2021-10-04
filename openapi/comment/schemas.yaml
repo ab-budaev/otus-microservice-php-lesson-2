@@ -4,8 +4,8 @@ Comment:
     - id
     - author
     - body
-    - entity_type
-    - entity_id
+    - entityType
+    - entityId
   properties:
     id:
       type: integer
@@ -16,9 +16,9 @@ Comment:
       $ref: '#/author'
     body:
       $ref: '#/body'
-    entity_type:
+    entityType:
       $ref: '#/entityType'
-    entity_id:
+    entityId:
       $ref: '#/entityId'
 
 CommentUpdateRequest:
@@ -26,16 +26,16 @@ CommentUpdateRequest:
   required:
     - author
     - body
-    - entity_type
-    - entity_id
+    - entityType
+    - entityId
   properties:
     author:
       $ref: '#/author'
     body:
       $ref: '#/body'
-    entity_type:
+    entityType:
       $ref: '#/entityType'
-    entity_id:
+    entityId:
       $ref: '#/entityId'
 
 author:
